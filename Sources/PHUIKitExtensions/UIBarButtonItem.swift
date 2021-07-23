@@ -28,7 +28,7 @@ public extension UIBarButtonItem {
 	///   - image: The optional image for the bar button item. If this is set, the title is ignored. Default value is `nil`.
 	///   - menu: An optional menu for the bar button item. Gets shown on a long press. Default value is `nil`.
 	///   - action: The primary action of the bar button item.
-	convenience init(title: String, image: UIImage? = nil, menu: UIMenu? = nil, action: @escaping () -> Void) {
+	convenience init(title: String? = nil, image: UIImage? = nil, menu: UIMenu? = nil, action: @escaping () -> Void) {
 		self.init(title: title, image: image, primaryAction: UIAction { _ in action() }, menu: menu)
 	}
 }
