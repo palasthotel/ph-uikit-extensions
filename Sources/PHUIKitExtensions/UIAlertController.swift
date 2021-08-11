@@ -49,11 +49,15 @@ public extension UIAlertController {
 							   firstAction: @escaping () -> Void = { },
 							   secondButtonTitle: String? = nil,
 							   secondButtonStyle: UIAlertAction.Style = .default,
+							   preferresSecondAction: Bool = false,
 							   secondAction: @escaping () -> Void = { }
 	) -> UIAlertController {
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		alertController.add(firstButtonTitle, style: firstButtonStyle, firstAction)
-		alertController.add(secondButtonTitle, style: secondButtonStyle, secondAction)
+		let action = alertController.add(secondButtonTitle, style: secondButtonStyle, secondAction)
+		if preferresSecondAction {
+			alertController.preferredAction = action
+		}
 		return alertController
 	}
 		
@@ -63,10 +67,13 @@ public extension UIAlertController {
 	///   - title: The optional title of the button. Default value is nil.
 	///   - style: The optional style of the button. Default value is `.default`.
 	///   - action: The action that is called when the button is pressed.
-	func add(_ title: String? = nil, style: UIAlertAction.Style = .default, _ action: @escaping () -> Void) {
-		addAction(UIAlertAction(title: title,
-								style: style) { _ in
+	@discardableResult func add(_ title: String? = nil, style: UIAlertAction.Style = .default, _ action: @escaping () -> Void) -> UIAlertAction {
+		let action = UIAlertAction(title: title,
+								   style: style) { _ in
 			action()
-		})
+		}
+		
+		addAction(action)
+		return action
 	}
 }
