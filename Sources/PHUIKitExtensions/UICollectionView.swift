@@ -15,11 +15,15 @@ public extension UICollectionView {
 	@available(iOS 14.0, *)
 	convenience init(appearance: UICollectionLayoutListConfiguration.Appearance,
 					 headerMode: UICollectionLayoutListConfiguration.HeaderMode = .none,
-					 footerMode: UICollectionLayoutListConfiguration.FooterMode = .none) {
+					 footerMode: UICollectionLayoutListConfiguration.FooterMode = .none,
+					 contentInsetsReference: UIContentInsetsReference = .readableContent) {
 		var config = UICollectionLayoutListConfiguration(appearance: appearance)
 		config.headerMode = headerMode
 		config.footerMode = footerMode
+		
 		let layout = UICollectionViewCompositionalLayout.list(using: config)
+		layout.configuration.contentInsetsReference = contentInsetsReference
+
 		self.init(frame: .zero, collectionViewLayout: layout)
 	}
 
