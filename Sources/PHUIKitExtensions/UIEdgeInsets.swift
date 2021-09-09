@@ -41,4 +41,33 @@ public extension UIEdgeInsets {
 	static func horizontal(_ value: CGFloat) -> UIEdgeInsets {
 		UIEdgeInsets(horizontal: value)
 	}
+	
+	/// Convenience accessor to create a `UIEdgeInsets` value with only a top inset.
+	/// - Parameter value: The top inset, setting only `.top` to this value.
+	/// - Returns: A `UIEdgeInsets` value, with `.top` set to the given parameter, and everything else set to `0`.
+	static func top(_ value: CGFloat) -> UIEdgeInsets {
+		UIEdgeInsets(top: value)
+	}
+	
+	/// Convenience accessor to create a `UIEdgeInsets` value with only a bottom inset.
+	/// - Parameter value: The bottom inset, setting only `.bottom` to this value.
+	/// - Returns: A `UIEdgeInsets` value, with `.bottom` set to the given parameter, and everything else set to `0`.
+	static func bottom(_ value: CGFloat) -> UIEdgeInsets {
+		UIEdgeInsets(bottom: value)
+	}
+	
+	/// Convenience accessor to create a `UIEdgeInsets` value with only a leading inset.
+	/// - Parameter value: The leading inset, setting only `.leading` to this value.
+	/// - Returns: A `UIEdgeInsets` value, with `.leading` set to the given parameter, and everything else set to `0`.
+	static func leading(_ value: CGFloat) -> UIEdgeInsets {
+		UIEdgeInsets(leading: value)
+	}
+	
+	/// Convenience accessor to create a `UIEdgeInsets` value with only a trailing inset.
+	/// - Parameter value: The trailing inset, setting only `.trailing` to this value.
+	/// - Returns: A `UIEdgeInsets` value, with `.trailing` set to the given parameter, and everything else set to `0`.
+	static func trailing(_ value: CGFloat) -> UIEdgeInsets {
+		UIEdgeInsets(trailing: value)
+	}
+	
 }
