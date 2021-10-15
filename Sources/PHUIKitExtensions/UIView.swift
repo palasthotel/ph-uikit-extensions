@@ -144,6 +144,30 @@ public extension UIView {
 		])
 	}
 	
+	func centerHorizontally(in view: UIView, offset: CGPoint = .zero) {
+		self.translatesAutoresizingMaskIntoConstraints = false
+		
+		if !view.subviews.contains(self) {
+			view.addSubview(self)
+		}
+		
+		NSLayoutConstraint.activate([
+			self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: offset.x),
+		])
+	}
+	
+	func centerVertically(in view: UIView, offset: CGPoint = .zero) {
+		self.translatesAutoresizingMaskIntoConstraints = false
+		
+		if !view.subviews.contains(self) {
+			view.addSubview(self)
+		}
+		
+		NSLayoutConstraint.activate([
+			self.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: offset.y),
+		])
+	}
+	
 	@discardableResult func setHeight(greaterThanOrEqual to: CGFloat) -> NSLayoutConstraint {
 		translatesAutoresizingMaskIntoConstraints = false
 		assert(superview != nil)

@@ -28,6 +28,13 @@ public extension UIEdgeInsets {
 	}
 	
 	
+	/// Convenience initializer that sets all values to the given parameter.
+	/// - Parameters:
+	///   - insetBy: The inset value, setting `.top`, `.bottom`, `.leading` and `.trailing` to this value.
+	init(insetBy value: CGFloat) {
+		self.init(top: value, leading: value, bottom: value, trailing: value)
+	}
+	
 	/// Convenience accessor to create a `UIEdgeInsets` value with vertical insets.
 	/// - Parameter value: The vertical inset, setting `.top` and `.bottom` to this value.
 	/// - Returns: A `UIEdgeInsets` value, with `.top` and `.bottom` set to the given parameter, and `.leading` and `.trailing` set to `0`.
@@ -70,4 +77,10 @@ public extension UIEdgeInsets {
 		UIEdgeInsets(trailing: value)
 	}
 	
+	/// Convenience accessor to create a `UIEdgeInsets` value with all values set to a given inset.
+	/// - Parameter value: The inset, setting all values to this value.
+	/// - Returns: A `UIEdgeInsets` value, with all values set to the given parameter.
+	static func by(_ inset: CGFloat) -> UIEdgeInsets {
+		.init(insetBy: inset)
+	}
 }
