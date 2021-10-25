@@ -24,7 +24,7 @@ public extension UIEdgeInsets {
 	///   - vertical: The vertical inset, setting `.top` and `.bottom` to this value.
 	///   - horizontal: The horizontal inset, setting `.leading` and `.trailing` to this value.
 	init(vertical: CGFloat = 0.0, horizontal: CGFloat = 0.0) {
-		self.init(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
+		self.init(top: vertical, leading: horizontal, bottom: vertical, trailing: horizontal)
 	}
 	
 	
