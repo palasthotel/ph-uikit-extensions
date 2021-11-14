@@ -11,6 +11,9 @@ import UIKit
 
 
 public extension UICollectionView {
+	static let elementKindLayoutHeader = "UICollectionView.elementKindLayoutHeader"
+	static let elementKindLayoutFooter = "UICollectionView.elementKindLayoutFooter"
+
 	
 	@available(iOS 14.0, *)
 	convenience init(appearance: UICollectionLayoutListConfiguration.Appearance,
