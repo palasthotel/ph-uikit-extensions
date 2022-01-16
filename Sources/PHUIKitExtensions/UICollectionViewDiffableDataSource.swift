@@ -24,7 +24,11 @@ public extension UICollectionViewDiffableDataSource {
 	
 	func reload(_ items: [ItemIdentifierType], animated: Bool = true) {
 		var snapshot = self.snapshot()
-		snapshot.reloadItems(items)
+		if #available(iOS 15.0, *) {
+			snapshot.reconfigureItems(items)
+		} else {
+			snapshot.reloadItems(items)
+		}
 		apply(snapshot, animatingDifferences: animated)
 	}
 	
