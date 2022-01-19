@@ -46,13 +46,9 @@ public extension UIViewController {
 	}
 	
 	/// The topmost view controller in the view controller hierarchy. Fetches the parent controller as long as it is not `nil`.
-	/// Returns `nil` if no parent is present.
-	func rootParentViewController() -> UIViewController? {
-		func fetchParent() -> UIViewController? {
-			parent ?? self
-		}
-		guard let parent = parent else { return nil }
-		return parent.rootParentViewController()
+	/// Returns `self` if no parent is present.
+	func rootViewController() -> UIViewController? {
+		parent?.rootViewController() ?? self
 	}
 	
 	func showPopover(_ controller: UIViewController, sourceView: UIView, directions: UIPopoverArrowDirection? = nil) {
