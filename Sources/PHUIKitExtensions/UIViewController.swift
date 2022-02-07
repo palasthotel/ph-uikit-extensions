@@ -47,9 +47,13 @@ public extension UIViewController {
 	
 	/// Recursively finds all child view controlers in the hierarchy of the generic type.
 	func recursiveChildren<T: UIViewController>() -> [T] {
-		var kids = children.compactMap { $0 as? T }
+		var kids: [T] = []
 		
-		for kid in kids {
+		for kid in children {
+			if let kid = kid as? T {
+				kids.append(kid)
+			}
+			
 			kids += kid.recursiveChildren()
 		}
 		
