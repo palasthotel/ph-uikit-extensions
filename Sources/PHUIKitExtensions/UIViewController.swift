@@ -45,6 +45,17 @@ public extension UIViewController {
 		}
 	}
 	
+	/// Recursively finds all child view controlers in the hierarchy of the generic type.
+	func recursiveChildren<T: UIViewController>() -> [T] {
+		var kids = children.compactMap { $0 as? T }
+		
+		for kid in kids {
+			kids += kid.recursiveChildren()
+		}
+		
+		return kids
+	}
+	
 	/// The topmost view controller in the view controller hierarchy. Fetches the parent controller as long as it is not `nil`.
 	/// Returns `self` if no parent is present.
 	func rootViewController() -> UIViewController? {
