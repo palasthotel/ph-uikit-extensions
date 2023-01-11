@@ -93,7 +93,7 @@ public extension UIImage {
 }
 
 
-extension Optional where Wrapped == UIImage.Configuration {
+public extension Optional where Wrapped == UIImage.Configuration {
 	static var smallScale: UIImage.SymbolConfiguration {
 		UIImage.SymbolConfiguration(scale: .small)
 	}
