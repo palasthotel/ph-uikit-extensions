@@ -91,3 +91,16 @@ public extension UIImage {
 		self.init(data: data as Data)
 	}
 }
+
+
+public extension UIImage.SymbolConfiguration {
+	static var small: UIImage.SymbolConfiguration {
+		UIImage.SymbolConfiguration(scale: .small)
+	}
+	static var medium: UIImage.SymbolConfiguration {
+		UIImage.SymbolConfiguration(scale: .medium)
+	}
+	static var large: UIImage.SymbolConfiguration {
+		UIImage.SymbolConfiguration(scale: .large)
+	}
+}
