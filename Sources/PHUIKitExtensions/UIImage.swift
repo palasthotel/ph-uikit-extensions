@@ -93,14 +93,14 @@ public extension UIImage {
 }
 
 
-public extension UIImage.SymbolConfiguration {
-	static var small: UIImage.SymbolConfiguration {
+extension Optional where Wrapped == UIImage.Configuration {
+	static var smallScale: UIImage.SymbolConfiguration {
 		UIImage.SymbolConfiguration(scale: .small)
 	}
-	static var medium: UIImage.SymbolConfiguration {
+	static var mediumScale: UIImage.SymbolConfiguration {
 		UIImage.SymbolConfiguration(scale: .medium)
 	}
-	static var large: UIImage.SymbolConfiguration {
+	static var largeScale: UIImage.SymbolConfiguration {
 		UIImage.SymbolConfiguration(scale: .large)
 	}
 }
