@@ -8,7 +8,7 @@ let package = Package(
 	platforms: [.iOS(.v13)],
     products: [
         .library(
-            name: "ph-uikit-extensions",
+            name: "PHUIKitExtensions",
             targets: ["PHUIKitExtensions"]
 		),
     ],
