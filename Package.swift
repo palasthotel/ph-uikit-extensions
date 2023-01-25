@@ -4,29 +4,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "PHUIKitExtensions",
-	platforms: [
-		.iOS(.v13)
-	],
+    name: "ph-uikit-extensions",
+	platforms: [.iOS(.v13)],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "PHUIKitExtensions",
+            name: "ph-uikit-extensions",
             targets: ["PHUIKitExtensions"]
 		),
     ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "PHUIKitExtensions",
-            dependencies: []),
+        .target(name: "PHUIKitExtensions"),
         .testTarget(
             name: "PHUIKitExtensionsTests",
-            dependencies: ["PHUIKitExtensions"]),
+            dependencies: ["PHUIKitExtensions"]
+		),
     ]
 )
