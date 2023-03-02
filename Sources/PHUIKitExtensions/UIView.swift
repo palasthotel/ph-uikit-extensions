@@ -30,7 +30,6 @@ public extension UIView {
 		return views
 	}
 	
-	
 	enum Edge {
 		public static var top: Edge { Edge.top(inset: 0.0) }
 		public static var bottom: Edge { Edge.bottom(inset: 0.0) }
@@ -128,7 +127,6 @@ public extension UIView {
 		}
 		
 		return (leading: leadingConstraint, top: topConstraint, bottom: bottomConstraint, trailing: trailingConstraint)
-		
 	}
 	
 	func center(in view: UIView, offset: CGPoint = .zero) {
@@ -219,6 +217,30 @@ public extension UIView {
 		assert(superview != nil)
 		
 		let constraint = widthAnchor.constraint(lessThanOrEqualToConstant: to)
+		constraint.isActive = true
+		return constraint
+	}
+	
+	@discardableResult func pin(_ edge: Edge, to view: UIView, edge anotherEdge: Edge, spacing: CGFloat = 0.0) -> NSLayoutConstraint {
+		assert(superview == view.superview)
+
+		self.translatesAutoresizingMaskIntoConstraints = false
+		view.translatesAutoresizingMaskIntoConstraints = false
+
+		let constraint: NSLayoutConstraint
+		
+		switch (edge, anotherEdge) {
+		case (.top, .top): constraint = topAnchor.constraint(equalTo: view.topAnchor, constant: spacing)
+		case (.top, .bottom): constraint = topAnchor.constraint(equalTo: view.bottomAnchor, constant: -spacing)
+		case (.leading, .leading): constraint = leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing)
+		case (.leading, .trailing): constraint = leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing)
+		case (.trailing, .leading): constraint = trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing)
+		case (.trailing, .trailing): constraint = trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing)
+		case (.bottom, .top): constraint = bottomAnchor.constraint(equalTo: view.topAnchor, constant: spacing)
+		case (.bottom, .bottom): constraint = bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -spacing)
+		default: fatalError("Cannot pin a vertical against a horizontal axis")
+		}
+		
 		constraint.isActive = true
 		return constraint
 	}
