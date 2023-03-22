@@ -221,7 +221,7 @@ public extension UIView {
 		return constraint
 	}
 	
-	@discardableResult func pin(_ edge: Edge, to view: UIView, edge anotherEdge: Edge, spacing: CGFloat = 0.0) -> NSLayoutConstraint {
+	@discardableResult func pin(_ edge: Edge, to anotherEdge: Edge, of view: UIView, spacing: CGFloat = 0.0) -> NSLayoutConstraint {
 		assert(superview == view.superview)
 
 		self.translatesAutoresizingMaskIntoConstraints = false
@@ -231,12 +231,12 @@ public extension UIView {
 		
 		switch (edge, anotherEdge) {
 		case (.top, .top): constraint = topAnchor.constraint(equalTo: view.topAnchor, constant: spacing)
-		case (.top, .bottom): constraint = topAnchor.constraint(equalTo: view.bottomAnchor, constant: -spacing)
+		case (.top, .bottom): constraint = topAnchor.constraint(equalTo: view.bottomAnchor, constant: spacing)
 		case (.leading, .leading): constraint = leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing)
-		case (.leading, .trailing): constraint = leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing)
-		case (.trailing, .leading): constraint = trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing)
+		case (.leading, .trailing): constraint = leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: spacing)
+		case (.trailing, .leading): constraint = trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -spacing)
 		case (.trailing, .trailing): constraint = trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing)
-		case (.bottom, .top): constraint = bottomAnchor.constraint(equalTo: view.topAnchor, constant: spacing)
+		case (.bottom, .top): constraint = bottomAnchor.constraint(equalTo: view.topAnchor, constant: -spacing)
 		case (.bottom, .bottom): constraint = bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -spacing)
 		default: fatalError("Cannot pin a vertical against a horizontal axis")
 		}
