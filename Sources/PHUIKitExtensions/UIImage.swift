@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MobileCoreServices
+import UniformTypeIdentifiers
 
 
 public extension UIImage {
@@ -51,7 +52,7 @@ public extension UIImage {
 		
 		let data = NSMutableData()
 		
-		guard let imageDestination = CGImageDestinationCreateWithData(data, kUTTypeJPEG, 1, nil) else {
+		guard let imageDestination = CGImageDestinationCreateWithData(data, UTType.jpeg.identifier as CFString, 1, nil) else {
 			return nil
 		}
 		
@@ -81,7 +82,7 @@ public extension UIImage {
 		
 		let data = NSMutableData()
 		
-		guard let imageDestination = CGImageDestinationCreateWithData(data, kUTTypeJPEG, 1, nil) else {
+		guard let imageDestination = CGImageDestinationCreateWithData(data, UTType.jpeg.identifier as CFString, 1, nil) else {
 			return nil
 		}
 		
